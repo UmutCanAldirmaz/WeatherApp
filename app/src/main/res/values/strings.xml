@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="weather_app">Weather App</string>
+    <string name="c">°C</string>
+    <!-- Weather information -->
+    <string name="feels_like">Feels like %1$d</string>
+    <string name="sunset_time">Sunset %1$s</string>
+    <!-- Accessibility descriptions -->
+    <string name="weather_icon_desc">Weather condition icon</string>
+    <string name="temperature_desc">Current temperature</string>
+    <string name="location_desc">Current location</string>
+    <string name="hourly_weather_desc">Hourly weather forecast</string>
+    <string name="menu_button_desc">Open menu</string>
+    <!-- Tab titles -->
+    <string name="tab_today">Today</string>
+    <string name="tab_tomorrow">Tomorrow</string>
+    <string name="tab_next_7_days">Next 7 Days</string>
+</resources>
