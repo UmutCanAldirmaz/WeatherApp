@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkBackground"
-    tools:context=".MainActivity">
+    tools:context=".presentation.ui.activities.MainActivity">
 
     <!-- Menu Button -->
     <ImageView
         android:id="@+id/menuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/menu_button_desc"
         android:src="@drawable/menu"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,59 +24,51 @@
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_regular"
         android:text="@string/weather_app"
         android:textColor="@color/gray"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/menuButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Weather Card Background -->
-    <View
-        android:id="@+id/weatherCardBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/card_background"
-        app:layout_constraintBottom_toBottomOf="@id/feelsLike"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appTitle" />
+        app:layout_constraintTop_toTopOf="@id/menuButton" />
 
     <!-- Weather Icon -->
     <ImageView
         android:id="@+id/weatherIcon"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="@string/weather_icon_desc"
         android:src="@drawable/sun"
-        app:layout_constraintEnd_toEndOf="@id/weatherCardBackground"
-        app:layout_constraintStart_toStartOf="@id/weatherCardBackground"
-        app:layout_constraintTop_toTopOf="@id/weatherCardBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menuButton"
         app:tint="@color/white" />
 
     <!-- Temperature -->
+
+    <!-- Temperature Unit -->
+
     <TextView
         android:id="@+id/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="136dp"
+
+        android:layout_marginTop="108dp"
+        android:layout_marginBottom="54dp"
+        android:contentDescription="@string/temperature_desc"
         android:fontFamily="@font/roboto_light"
+        android:gravity="center"
         android:text="27"
         android:textColor="@color/white"
         android:textSize="120sp"
-        android:contentDescription="@string/temperature_desc"
-        app:layout_constraintEnd_toEndOf="@id/weatherCardBackground"
-        app:layout_constraintStart_toStartOf="@id/weatherCardBackground"
-        app:layout_constraintTop_toBottomOf="@id/weatherIcon" />
+        app:layout_constraintBottom_toTopOf="@+id/feelsLike"
+        app:layout_constraintEnd_toStartOf="@+id/temperatureUnit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuButton" />
 
-    <!-- Temperature Unit -->
     <TextView
         android:id="@+id/temperatureUnit"
         android:layout_width="wrap_content"
@@ -92,319 +85,113 @@
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/location_desc"
         android:fontFamily="@font/roboto_medium"
         android:text="London, UK"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:contentDescription="@string/location_desc"
-        app:layout_constraintEnd_toEndOf="@id/weatherCardBackground"
-        app:layout_constraintStart_toStartOf="@id/weatherCardBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/temperature" />
 
-    <!-- Weather Details - Feels Like -->
+    <!-- Weather Details -->
     <TextView
         android:id="@+id/feelsLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="24dp"
         android:fontFamily="@font/roboto_medium"
+        android:text="@string/feels_like"
         android:textColor="@color/gray"
         android:textSize="14sp"
-        android:text="@string/feels_like"
-        app:layout_constraintEnd_toStartOf="@+id/sunsetTime"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@id/weatherCardBackground"
+        app:layout_constraintEnd_toStartOf="@id/sunsetTime"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/location" />
 
-    <!-- Weather Details - Sunset Time -->
     <TextView
         android:id="@+id/sunsetTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:fontFamily="@font/roboto_medium"
+        android:text="@string/humidity"
         android:textColor="@color/gray"
         android:textSize="14sp"
-        android:text="@string/sunset_time"
-        app:layout_constraintEnd_toEndOf="@id/weatherCardBackground"
-        app:layout_constraintStart_toEndOf="@+id/feelsLike"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/feelsLike"
         app:layout_constraintTop_toTopOf="@id/feelsLike" />
 
-    <!-- Today Tab -->
+    <!-- Tabs -->
     <TextView
         android:id="@+id/todayTab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/roboto_medium"
+        android:padding="8dp"
+        android:text="@string/tab_today"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/tab_today"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/weatherCardBackground" />
+        app:layout_constraintTop_toBottomOf="@id/feelsLike" />
 
-    <!-- Today Tab Indicator -->
     <View
         android:id="@+id/todayTabIndicator"
-        android:layout_width="0dp"
+        android:layout_width="65dp"
         android:layout_height="2dp"
-        android:layout_marginTop="4dp"
         android:background="@color/orange"
-        app:layout_constraintEnd_toEndOf="@id/todayTab"
         app:layout_constraintStart_toStartOf="@id/todayTab"
         app:layout_constraintTop_toBottomOf="@id/todayTab" />
 
-    <!-- Tomorrow Tab -->
     <TextView
         android:id="@+id/tomorrowTab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/roboto_medium"
+        android:padding="8dp"
+        android:text="@string/tab_tomorrow"
         android:textColor="@color/gray"
         android:textSize="18sp"
-        android:text="@string/tab_tomorrow"
         app:layout_constraintStart_toEndOf="@id/todayTab"
         app:layout_constraintTop_toTopOf="@id/todayTab" />
 
-    <!-- 7 Days Tab -->
     <TextView
-        android:id="@+id/sevenDaysTab"
+        android:id="@+id/fiveDaysTab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/roboto_medium"
+        android:padding="8dp"
+        android:text="@string/tab_next_5_days"
         android:textColor="@color/gray"
         android:textSize="18sp"
-        android:text="@string/tab_next_7_days"
         app:layout_constraintStart_toEndOf="@id/tomorrowTab"
         app:layout_constraintTop_toTopOf="@id/todayTab" />
 
-    <!-- Hourly Forecast ScrollView -->
-    <HorizontalScrollView
-        android:id="@+id/hourlyForecastScroll"
+    <!-- Weather Cards -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/weatherCardsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:scrollbars="none"
-        android:contentDescription="@string/hourly_weather_desc"
-        app:layout_constraintTop_toBottomOf="@id/todayTabIndicator">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp">
-
-            <!-- 9 AM Card Background -->
-            <View
-                android:id="@+id/card9amBg"
-                android:layout_width="80dp"
-                android:layout_height="140dp"
-                android:background="@drawable/dark_gray_background"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- 9 AM Time -->
-            <TextView
-                android:id="@+id/time9am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="9 AM"
-                android:textColor="@color/gray"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@id/card9amBg"
-                app:layout_constraintStart_toStartOf="@id/card9amBg"
-                app:layout_constraintTop_toTopOf="@id/card9amBg" />
-
-            <!-- 9 AM Icon -->
-            <ImageView
-                android:id="@+id/icon9am"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/sun"
-                android:contentDescription="@string/weather_icon_desc"
-                app:layout_constraintEnd_toEndOf="@id/card9amBg"
-                app:layout_constraintStart_toStartOf="@id/card9amBg"
-                app:layout_constraintTop_toBottomOf="@id/time9am"
-                app:tint="@color/white" />
-
-            <!-- 9 AM Temp -->
-            <TextView
-                android:id="@+id/temp9am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="24°C"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/card9amBg"
-                app:layout_constraintStart_toStartOf="@id/card9amBg"
-                app:layout_constraintTop_toBottomOf="@id/icon9am" />
-
-            <!-- 10 AM Card Background -->
-            <View
-                android:id="@+id/card10amBg"
-                android:layout_width="80dp"
-                android:layout_height="160dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/orange_background"
-                app:layout_constraintStart_toEndOf="@id/card9amBg"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- 10 AM Time -->
-            <TextView
-                android:id="@+id/time10am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="10 AM"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@id/card10amBg"
-                app:layout_constraintStart_toStartOf="@id/card10amBg"
-                app:layout_constraintTop_toTopOf="@id/card10amBg" />
-
-            <!-- 10 AM Icon -->
-            <ImageView
-                android:id="@+id/icon10am"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/sun"
-                android:contentDescription="@string/weather_icon_desc"
-                app:layout_constraintEnd_toEndOf="@id/card10amBg"
-                app:layout_constraintStart_toStartOf="@id/card10amBg"
-                app:layout_constraintTop_toBottomOf="@id/time10am"
-                app:tint="@color/white" />
-
-            <!-- 10 AM Temp -->
-            <TextView
-                android:id="@+id/temp10am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="27°C"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@id/card10amBg"
-                app:layout_constraintStart_toStartOf="@id/card10amBg"
-                app:layout_constraintTop_toBottomOf="@id/icon10am" />
-
-            <!-- 11 AM Card Background -->
-            <View
-                android:id="@+id/card11amBg"
-                android:layout_width="80dp"
-                android:layout_height="140dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/dark_gray_background"
-                app:layout_constraintStart_toEndOf="@id/card10amBg"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- 11 AM Time -->
-            <TextView
-                android:id="@+id/time11am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="11 AM"
-                android:textColor="@color/gray"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@id/card11amBg"
-                app:layout_constraintStart_toStartOf="@id/card11amBg"
-                app:layout_constraintTop_toTopOf="@id/card11amBg" />
-
-            <!-- 11 AM Icon -->
-            <ImageView
-                android:id="@+id/icon11am"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/cloudy"
-                android:contentDescription="@string/weather_icon_desc"
-                app:layout_constraintEnd_toEndOf="@id/card11amBg"
-                app:layout_constraintStart_toStartOf="@id/card11amBg"
-                app:layout_constraintTop_toBottomOf="@id/time11am"
-                app:tint="@color/white" />
-
-            <!-- 11 AM Temp -->
-            <TextView
-                android:id="@+id/temp11am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="21°C"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/card11amBg"
-                app:layout_constraintStart_toStartOf="@id/card11amBg"
-                app:layout_constraintTop_toBottomOf="@id/icon11am" />
-
-            <!-- 12 AM Card Background -->
-            <View
-                android:id="@+id/card12amBg"
-                android:layout_width="80dp"
-                android:layout_height="140dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/dark_gray_background"
-                app:layout_constraintStart_toEndOf="@id/card11amBg"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- 12 AM Time -->
-            <TextView
-                android:id="@+id/time12am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="12 AM"
-                android:textColor="@color/gray"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@id/card12amBg"
-                app:layout_constraintStart_toStartOf="@id/card12amBg"
-                app:layout_constraintTop_toTopOf="@id/card12amBg" />
-
-            <!-- 12 AM Icon -->
-            <ImageView
-                android:id="@+id/icon12am"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/cloudy"
-                android:contentDescription="@string/weather_icon_desc"
-                app:layout_constraintEnd_toEndOf="@id/card12amBg"
-                app:layout_constraintStart_toStartOf="@id/card12amBg"
-                app:layout_constraintTop_toBottomOf="@id/time12am"
-                app:tint="@color/white" />
-
-            <!-- 12 AM Temp -->
-            <TextView
-                android:id="@+id/temp12am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="20°C"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/card12amBg"
-                app:layout_constraintStart_toStartOf="@id/card12amBg"
-                app:layout_constraintTop_toBottomOf="@id/icon12am" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </HorizontalScrollView>
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/todayTabIndicator"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_weather_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,8 +65,15 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     
+    // Google Play Services - Location
+    implementation("com.google.android.gms:play-services-location:21.1.0")
+    
+    // Coil for image loading
+    implementation("io.coil-kt:coil:2.5.0")
+    
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48")
+    implementation(libs.play.services.location)
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-fragment:1.1.0")
     

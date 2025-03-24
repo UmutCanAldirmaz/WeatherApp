@@ -1,18 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WeatherApp</string>
     <string name="weather_app">Weather App</string>
     <string name="c">°C</string>
     <!-- Weather information -->
-    <string name="feels_like">Feels like %1$d</string>
-    <string name="sunset_time">Sunset %1$s</string>
+    <string name="feels_like">Feels like</string>
+    <string name="humidity">Humidity</string>
     <!-- Accessibility descriptions -->
-    <string name="weather_icon_desc">Weather condition icon</string>
-    <string name="temperature_desc">Current temperature</string>
-    <string name="location_desc">Current location</string>
+    <string name="weather_icon_desc">Weather Icon</string>
+    <string name="temperature_desc">Temperature</string>
+    <string name="location_desc">Location</string>
     <string name="hourly_weather_desc">Hourly weather forecast</string>
-    <string name="menu_button_desc">Open menu</string>
+    <string name="menu_button_desc">Menu Button</string>
     <!-- Tab titles -->
     <string name="tab_today">Today</string>
     <string name="tab_tomorrow">Tomorrow</string>
-    <string name="tab_next_7_days">Next 7 Days</string>
+    <string name="tab_next_5_days">Next 5 Days</string>
+    
+    <!-- Formats -->
+    <string name="feels_like_format">Feels like %d°C</string>
+    <string name="humidity_format">Humidity %d%%</string>
+    
+    <!-- Messages -->
+    <string name="location_permission_rationale">Location permission is needed for weather data</string>
+    <string name="using_default_location">Using default location</string>
+    <string name="enable_location_services">Please enable location services</string>
 </resources>
