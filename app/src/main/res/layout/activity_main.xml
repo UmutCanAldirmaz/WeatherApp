@@ -183,15 +183,17 @@
     <!-- Weather Cards -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weatherCardsRecyclerView"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:clipToPadding="false"
         android:orientation="horizontal"
         android:paddingHorizontal="24dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/todayTabIndicator"
         tools:itemCount="4"
+        tools:layout_editor_absoluteX="16dp"
         tools:listitem="@layout/item_weather_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
