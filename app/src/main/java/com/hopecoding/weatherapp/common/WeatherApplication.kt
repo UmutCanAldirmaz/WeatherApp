@@ -1,4 +1,4 @@
-package com.hopecoding.weatherapp
+package com.hopecoding.weatherapp.common
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -60,6 +60,6 @@ class LocationProvider @Inject constructor(
 
     // Default location (Istanbul) - Fallback
     fun getDefaultLocation(): Pair<Double, Double> {
-        return Pair(41.238, 31.605) // KDZ.Eregli coordinates
+        return Pair(40.95890000,29.17866000) // Istanbul Maltepe
     }
-} 
+}
