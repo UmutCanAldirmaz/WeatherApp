@@ -1,3 +1,16 @@
+import java.io.FileInputStream
+import java.util.Properties
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(FileInputStream(localPropertiesFile))
+}
+
+val apiKey = localProperties.getProperty("API_KEY") ?: ""
+
+
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,18 +18,23 @@ plugins {
     id("com.google.dagger.hilt.android")
 }
 
+
+
 android {
+
     namespace = "com.hopecoding.weatherapp"
     compileSdk = 34
-
     defaultConfig {
         applicationId = "com.hopecoding.weatherapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
+
+
     }
 
     buildTypes {
@@ -31,7 +49,14 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
+
+
+
+
+
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -41,6 +66,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+
 }
 
 dependencies {
@@ -59,7 +86,7 @@ dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
-    implementation (libs.kotlinx.coroutines.play.services)
+    implementation(libs.kotlinx.coroutines.play.services)
     // Retrofit for network calls
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
@@ -75,6 +102,9 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.fragment)
+
+    //Timber
+    implementation(libs.timber)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v115)
