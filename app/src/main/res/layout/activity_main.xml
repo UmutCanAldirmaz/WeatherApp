@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     android:background="@color/darkBackground"
     tools:context=".presentation.ui.MainActivity">
 
-    <!-- Menu Button -->
+    <!-- Mevcut UI elemanları (menuButton, appTitle, vb.) -->
     <ImageView
         android:id="@+id/menuButton"
         android:layout_width="wrap_content"
@@ -19,7 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- App Title -->
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
@@ -33,7 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/menuButton" />
 
-    <!-- Weather Icon -->
     <ImageView
         android:id="@+id/weatherIcon"
         android:layout_width="64dp"
@@ -43,19 +42,13 @@
         android:src="@drawable/sun"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/menuButton"
-        app:tint="@color/white" />
-
-    <!-- Temperature -->
-
-    <!-- Temperature Unit -->
+        app:layout_constraintTop_toBottomOf="@id/menuButton" />
 
     <TextView
         android:id="@+id/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
-
         android:layout_marginTop="108dp"
         android:layout_marginBottom="54dp"
         android:contentDescription="@string/temperature_desc"
@@ -67,7 +60,7 @@
         app:layout_constraintBottom_toTopOf="@+id/feelsLike"
         app:layout_constraintEnd_toStartOf="@+id/temperatureUnit"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuButton" />
+        app:layout_constraintTop_toBottomOf="@id/menuButton" />
 
     <TextView
         android:id="@+id/temperatureUnit"
@@ -80,7 +73,6 @@
         app:layout_constraintStart_toEndOf="@id/temperature"
         app:layout_constraintTop_toTopOf="@id/temperature" />
 
-    <!-- Location -->
     <TextView
         android:id="@+id/location"
         android:layout_width="wrap_content"
@@ -95,7 +87,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/temperature" />
 
-    <!-- Weather Details -->
     <TextView
         android:id="@+id/feelsLike"
         android:layout_width="wrap_content"
@@ -121,7 +112,6 @@
         app:layout_constraintStart_toEndOf="@id/feelsLike"
         app:layout_constraintTop_toTopOf="@id/feelsLike" />
 
-    <!-- Tabs -->
     <TextView
         android:id="@+id/todayTab"
         android:layout_width="wrap_content"
@@ -132,6 +122,7 @@
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/roboto_medium"
+        android:minHeight="48dp"
         android:padding="8dp"
         android:text="@string/tab_today"
         android:textColor="@color/white"
@@ -157,6 +148,7 @@
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/roboto_medium"
+        android:minHeight="48dp"
         android:padding="8dp"
         android:text="@string/tab_tomorrow"
         android:textColor="@color/gray"
@@ -173,6 +165,7 @@
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/roboto_medium"
+        android:minHeight="48dp"
         android:padding="8dp"
         android:text="@string/tab_next_5_days"
         android:textColor="@color/gray"
@@ -180,7 +173,6 @@
         app:layout_constraintStart_toEndOf="@id/tomorrowTab"
         app:layout_constraintTop_toTopOf="@id/todayTab" />
 
-    <!-- Weather Cards -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weatherCardsRecyclerView"
         android:visibility="gone"
@@ -195,5 +187,38 @@
         tools:itemCount="4"
         tools:layout_editor_absoluteX="16dp"
         tools:listitem="@layout/item_weather_card" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/weatherCardsRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- İkon açıklamaları için ScrollView ve LinearLayout -->
+
+    <ScrollView
+        android:id="@+id/iconDescriptionScrollView"
+        android:contentDescription="null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weatherCardsRecyclerView">
+
+        <LinearLayout
+            android:id="@+id/iconDescriptionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

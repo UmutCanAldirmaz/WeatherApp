@@ -20,6 +20,10 @@
     <!-- Formats -->
     <string name="feels_like_format">Feels like %d°C</string>
     <string name="humidity_format">Humidity %d%%</string>
+
+    <string name="icon_description">Hava durumu ikonu</string>
+
+    <string name="location_permission_denied">Konum izni verilmedi, varsayılan konum kullanılıyor</string>
     
     <!-- Messages -->
     <string name="location_permission_rationale">Location permission is needed for weather data</string>

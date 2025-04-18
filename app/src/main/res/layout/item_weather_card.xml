@@ -35,7 +35,7 @@
             android:layout_marginTop="8dp"
             android:contentDescription="@string/weather_icon_desc"
             android:src="@drawable/sun"
-            app:tint="@color/white" />
+             />
 
         <TextView
             android:id="@+id/temperatureText"
