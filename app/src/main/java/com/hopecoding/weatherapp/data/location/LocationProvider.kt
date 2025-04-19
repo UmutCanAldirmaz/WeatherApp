@@ -3,9 +3,11 @@ package com.hopecoding.weatherapp.data.location
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.provider.Settings
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -41,7 +43,7 @@ class LocationProvider @Inject constructor(
 
     @SuppressLint("MissingPermission")
     suspend fun getCurrentLocation(): Location? {
-        if (!hasLocationPermission()) return null
+        if (!hasLocationPermission() || !isLocationEnabled()) return null
 
         return suspendCancellableCoroutine { continuation ->
             fusedLocationClient.lastLocation
@@ -51,15 +53,16 @@ class LocationProvider @Inject constructor(
                 .addOnFailureListener {
                     continuation.resume(null)
                 }
-
-            continuation.invokeOnCancellation {
-                // Handle cancellation if needed
-            }
         }
     }
 
-    // Default location (Istanbul) - Fallback
+    fun openLocationSettings() {
+        val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        context.startActivity(intent)
+    }
+
     fun getDefaultLocation(): Pair<Double, Double> {
-        return Pair(40.95890000,29.17866000) // Istanbul Maltepe
+        return Pair(40.95890000, 29.17866000) // Istanbul Maltepe
     }
 }
