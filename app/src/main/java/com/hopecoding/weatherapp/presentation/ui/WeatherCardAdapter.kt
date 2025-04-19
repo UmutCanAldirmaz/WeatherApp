@@ -1,6 +1,5 @@
 package com.hopecoding.weatherapp.presentation.ui
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -10,6 +9,7 @@ import coil.load
 import com.hopecoding.weatherapp.R
 import com.hopecoding.weatherapp.databinding.ItemWeatherCardBinding
 import com.hopecoding.weatherapp.domain.model.WeatherCard
+import timber.log.Timber
 
 class WeatherCardAdapter(
     private val onCardClick: (Int) -> Unit
@@ -26,9 +26,9 @@ class WeatherCardAdapter(
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION && cards.isNotEmpty()) {
                     cards.forEachIndexed { index, card ->
-                        card.isSelected = index == position
+                        card.isSelected = if (index == position) !card.isSelected else false
                     }
-                    notifyDataSetChanged() // Performans için daha sonra optimize edilebilir
+                    notifyDataSetChanged()
                     onCardClick(position)
                 }
             }
@@ -36,14 +36,16 @@ class WeatherCardAdapter(
 
         fun bind(card: WeatherCard) {
             binding.apply {
+                dateText.text = card.date
                 timeText.text = card.time
                 temperatureText.text = card.temperature
 
                 val iconUrl = "https://openweathermap.org/img/wn/${card.iconCode}@2x.png"
+                Timber.d("Icon code: ${card.iconCode}, URL: https://openweathermap.org/img/wn/${card.iconCode}@2x.png")
                 weatherIcon.load(iconUrl) {
                     crossfade(true)
-                    placeholder(R.drawable.ic_launcher_foreground)
-                    error(R.drawable.ic_launcher_foreground)
+                    placeholder(R.drawable.sun)
+                    error(R.drawable.sun)
                 }
 
                 val backgroundColor = if (card.isSelected) {
@@ -81,11 +83,15 @@ class WeatherCardAdapter(
     override fun getItemCount() = cards.size
 
     fun updateCards(newCards: List<WeatherCard>) {
-        Log.d("WeatherCardAdapter", "updateCards: newCards size = ${newCards.size}")
+        Timber.d("updateCards: newCards size = ${newCards.size}")
         val diffCallback = WeatherCardDiffCallback(cards, newCards)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         cards = newCards
         diffResult.dispatchUpdatesTo(this)
+    }
+
+    fun hasSelectedCard(): Boolean {
+        return cards.any { it.isSelected }
     }
 
     private class WeatherCardDiffCallback(
