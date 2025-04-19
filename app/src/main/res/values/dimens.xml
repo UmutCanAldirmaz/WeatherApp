@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="card_height_normal">140dp</dimen>
-    <dimen name="card_height_selected">160dp</dimen>
+    <dimen name="card_height_normal">160dp</dimen>
+    <dimen name="card_height_selected">180dp</dimen>
 </resources> 
