@@ -1,7 +1,13 @@
 package com.hopecoding.weatherapp.presentation.ui
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Paint
+import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
@@ -13,6 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import com.hopecoding.weatherapp.BuildConfig
 import com.hopecoding.weatherapp.R
 import com.hopecoding.weatherapp.data.model.WeatherCurrentResponse
 import com.hopecoding.weatherapp.data.model.WeatherForecastItem
@@ -45,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -53,7 +61,17 @@ class MainActivity : AppCompatActivity() {
         setupTabClickListeners()
         setupObservers()
 
+        // BroadcastReceiver'ı kaydet
+        val filter = IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION)
+        registerReceiver(locationStateReceiver, filter)
+
         checkLocationAndFetchWeather()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // BroadcastReceiver'ı kaldır
+        unregisterReceiver(locationStateReceiver)
     }
 
     private fun setupTabClickListeners() {
@@ -285,5 +303,15 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         Timber.d("onResume called")
         checkLocationAndFetchWeather()
+    }
+
+    private val locationStateReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == LocationManager.PROVIDERS_CHANGED_ACTION) {
+                Timber.d("locationStateReceiver:Location providers changed")
+                // Konum servisi durumu değişti, tekrar kontrol et
+                checkLocationAndFetchWeather()
+            }
+        }
     }
 }
