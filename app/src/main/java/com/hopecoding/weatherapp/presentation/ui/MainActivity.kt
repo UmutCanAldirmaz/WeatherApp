@@ -72,10 +72,10 @@ class MainActivity : AppCompatActivity() {
                 val tabs = listOf(binding.todayTab, binding.tomorrowTab, binding.fiveDaysTab)
                 tabs.forEachIndexed { index, tab ->
                     if (index == selectedIndex) {
-                        tab.setTextColor(ContextCompat.getColor(this@MainActivity, R.color.white))
+                        tab.setTextColor(ContextCompat.getColor(this@MainActivity, R.color.orange))
                         tab.paintFlags = tab.paintFlags or Paint.UNDERLINE_TEXT_FLAG
                     } else {
-                        tab.setTextColor(ContextCompat.getColor(this@MainActivity, R.color.gray))
+                        tab.setTextColor(ContextCompat.getColor(this@MainActivity, R.color.white))
                         tab.paintFlags = tab.paintFlags and Paint.UNDERLINE_TEXT_FLAG.inv()
                     }
                 }
