@@ -10,16 +10,16 @@ class APIRepositoryImpl @Inject constructor(
     private val apiService: WeatherApiService
 ) : APIRepository {
     override suspend fun getForecastData(
-        lat: Double,
-        lon: Double,
+        lat: Double?,
+        lon: Double?,
         apiKey: String,
     ): WeatherForecastResponse {
         return apiService.getForecastData(lat, lon, apiKey,"metric")
     }
 
     override suspend fun getCurrentWeather(
-        lat: Double,
-        lon: Double,
+        lat: Double?,
+        lon: Double?,
         apiKey: String,
     ): WeatherCurrentResponse {
         return apiService.getCurrentWeather(lat, lon, apiKey,"metric")
