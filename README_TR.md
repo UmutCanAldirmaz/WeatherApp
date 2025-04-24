@@ -19,7 +19,8 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
 
 | Varsayılan Konum | Konum İzni | Sonraki 5 Gün (1) | Sonraki 5 Gün (2) | Sekme Seçimi | Hava Durumu Diyalogu |
 |------------------|------------|-------------------|-------------------|--------------|----------------------|
-| ![Varsayılan Konum](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_defaultLocation.png) | ![Konum İzni](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_locationPermission.png) | ![Sonraki 5 Gün (1)](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_next5Days.png) | ![Sonraki 5 Gün (2)](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_next5Days2.png) | ![Sekme Seçimi](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_selectedTab.png) | ![Hava Durumu Diyalogu](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_weatherDialog.png) |
+| ![Varsayılan Konum]![Screenshot_defaultLocation](https://github.com/user-attachments/assets/338f520c-5ede-4442-a4a5-0541e45a3cc8)
+ | ![Konum İzni](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_locationPermission.png) | ![Sonraki 5 Gün (1)](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_next5Days.png) | ![Sonraki 5 Gün (2)](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_next5Days2.png) | ![Sekme Seçimi](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_selectedTab.png) | ![Hava Durumu Diyalogu](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_weatherDialog.png) |
 
 ### Ekran Kaydı
 
