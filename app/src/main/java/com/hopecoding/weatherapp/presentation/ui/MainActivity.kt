@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weatherCardAdapter: WeatherCardAdapter
     private var isFirstResume = true
     private var wasInBackground = false
+    private var isLocationPromptShowing = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,18 +106,22 @@ class MainActivity : AppCompatActivity() {
         viewModel.showLocationPrompt.observe(this) { showPrompt ->
             if (showPrompt == true) {
                 showLocationPrompt()
+                viewModel.resetLocationPrompt()
             }
         }
 
     }
 
     private fun showLocationPrompt() {
+        isLocationPromptShowing = true
         AlertDialog.Builder(this)
             .setTitle("Konum Servisleri Kapalı")
             .setMessage("Konum bilgileri kapalı. Konum ayarlarına gidilsin mi?")
             .setPositiveButton("Evet") { _, _ ->
                 viewModel.locationProvider.openLocationSettings()
-                if (viewModel.locationProvider.isLocationEnabled()) viewModel.checkAndFetchWeather()
+                if (viewModel.locationProvider.isLocationEnabled())
+                    viewModel.checkAndFetchWeather()
+                isLocationPromptShowing = false
             }
             .setNegativeButton("Hayır") { _, _ ->
                 lifecycleScope.launch {
@@ -131,6 +136,7 @@ class MainActivity : AppCompatActivity() {
                         resetUI()
                     }
                 }
+                isLocationPromptShowing = false
             }
             .setCancelable(false)
             .show()
@@ -288,10 +294,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Timber.d("onResume called, isFirstResume: $isFirstResume")
-        if (!isFirstResume && wasInBackground) {
-            viewModel.checkAndFetchWeather() // İlk açılışta atlanması için, sadece arka plandan dönüşte çalış
+        if (!isFirstResume && wasInBackground && !isLocationPromptShowing) {
+            viewModel.checkAndFetchWeather()
         }
         isFirstResume = false
+        wasInBackground = false
     }
 
     override fun onPause() {

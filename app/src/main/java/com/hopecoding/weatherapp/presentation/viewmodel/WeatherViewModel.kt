@@ -50,24 +50,24 @@ class WeatherViewModel @Inject constructor(
     val showLocationPrompt: LiveData<Boolean> get() = _showLocationPrompt
 
     private val iconDescriptions = listOf(
-        IconDescription("01d", "Açık Hava (Gündüz)"),
-        IconDescription("01n", "Açık Hava (Gece)"),
-        IconDescription("02d", "Az Bulutlu Hava (Gündüz)"),
-        IconDescription("02n", "Az Bulutlu Hava (Gece)"),
-        IconDescription("03d", "Dağınık Bulutlu Hava(Gündüz)"),
-        IconDescription("03n", "Dağınık Bulutlu Hava (Gece)"),
-        IconDescription("04d", "Kapalı Bulutlu Hava(Gündüz)"),
-        IconDescription("04n", "Kapalı Bulutlu Hava (Gece)"),
-        IconDescription("09d", "Çiseleme Hava (Gündüz)"),
-        IconDescription("09n", "Çiseleme Hava (Gece)"),
-        IconDescription("10d", "Yağmurlu Hava(Gündüz)"),
-        IconDescription("10n", "Yağmurlu Hava (Gece)"),
-        IconDescription("11d", "Gök gürültülü Fırtınalı Hava (Gündüz)"),
-        IconDescription("11n", "Gökgürültülü Fırtınalı Hava (Gece)"),
-        IconDescription("13d", "Karlı Hava (Gündüz)"),
-        IconDescription("13n", "Karlı Hava (Gece)"),
-        IconDescription("50d", "Sisli Hava (Gündüz)"),
-        IconDescription("50n", "Sisli Hava (Gece)")
+        IconDescription("01d", "Clear Sky (Day)"),
+        IconDescription("01n", "Clear Sky (Night)"),
+        IconDescription("02d", "Few Clouds (Day)"),
+        IconDescription("02n", "Few Clouds (Night)"),
+        IconDescription("03d", "Scattered Clouds (Day)"),
+        IconDescription("03n", "Scattered Clouds (Night)"),
+        IconDescription("04d", "Overcast Clouds (Day)"),
+        IconDescription("04n", "Overcast Clouds (Night)"),
+        IconDescription("09d", "Drizzle (Day)"),
+        IconDescription("09n", "Drizzle (Night)"),
+        IconDescription("10d", "Rainy Weather (Day)"),
+        IconDescription("10n", "Rainy Weather (Night)"),
+        IconDescription("11d", "Thunderstorm (Day)"),
+        IconDescription("11n", "Thunderstorm (Night)"),
+        IconDescription("13d", "Snowy Weather (Day)"),
+        IconDescription("13n", "Snowy Weather (Night)"),
+        IconDescription("50d", "Foggy Weather (Day)"),
+        IconDescription("50n", "Foggy Weather (Night)")
     )
 
     // Kullanılan ikonları döndüren fonksiyon
@@ -173,5 +173,9 @@ class WeatherViewModel @Inject constructor(
             }
             forecasts.getOrNull(position)
         }
+    }
+
+    fun resetLocationPrompt() {
+        _showLocationPrompt.value = false
     }
 }
