@@ -1,13 +1,7 @@
 package com.hopecoding.weatherapp.presentation.ui
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.graphics.Paint
-import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
@@ -37,18 +31,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: WeatherViewModel by viewModels()
     private lateinit var weatherCardAdapter: WeatherCardAdapter
-    private var isLocationPromptShown = false
-
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) {
-                checkLocationAndFetchWeather()
-            } else {
-                showCustomToast(getString(R.string.location_permission_denied))
-                resetUI()
-                viewModel.checkAndFetchWeather()
-            }
-        }
+    private var isFirstResume = true
+    private var wasInBackground = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,17 +45,8 @@ class MainActivity : AppCompatActivity() {
         setupTabClickListeners()
         setupObservers()
 
-        // BroadcastReceiver'ı kaydet
-        val filter = IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION)
-        registerReceiver(locationStateReceiver, filter)
 
-        checkLocationAndFetchWeather()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        // BroadcastReceiver'ı kaldır
-        unregisterReceiver(locationStateReceiver)
+        requestLocationPermission()
     }
 
     private fun setupTabClickListeners() {
@@ -83,6 +58,84 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun setupObservers() {
+        setupTabObservers() // Sekme durumunu gözlemle
+
+        viewModel.forecastData.observe(this) { forecastData ->
+            Timber.d("ForecastData observed: %s", forecastData)
+            if (forecastData != null) {
+                binding.location.text = "${forecastData.city.name}, ${forecastData.city.country}"
+            } else {
+                binding.location.text = ""
+            }
+        }
+
+        viewModel.currentWeather.observe(this) { currentWeather ->
+            Timber.d("CurrentWeather observed: %s", currentWeather)
+            if (currentWeather != null) {
+                updateWeatherUI(currentWeather)
+            } else {
+                resetWeatherUI()
+            }
+        }
+
+        viewModel.weatherCards.observe(this) { cards ->
+            Timber.d("WeatherCards observed: %s", cards)
+            if (cards != null && cards.isNotEmpty()) {
+                weatherCardAdapter.updateCards(cards)
+                binding.weatherCardsRecyclerView.visibility = View.VISIBLE
+                binding.weatherCardsRecyclerView.scrollToPosition(0)
+                updateIconDescriptions(viewModel.getUsedIconDescriptions())
+                if (!weatherCardAdapter.hasSelectedCard()) {
+                    viewModel.currentWeather.value?.let { updateWeatherUI(it) }
+                }
+            } else {
+                binding.weatherCardsRecyclerView.visibility = View.GONE
+                updateIconDescriptions(emptyList())
+            }
+        }
+
+        viewModel.error.observe(this) { errorMessage ->
+            if (errorMessage != null) {
+                showCustomToast(errorMessage)
+            }
+        }
+
+        viewModel.showLocationPrompt.observe(this) { showPrompt ->
+            if (showPrompt == true) {
+                showLocationPrompt()
+            }
+        }
+
+    }
+
+    private fun showLocationPrompt() {
+        AlertDialog.Builder(this)
+            .setTitle("Konum Servisleri Kapalı")
+            .setMessage("Konum bilgileri kapalı. Konum ayarlarına gidilsin mi?")
+            .setPositiveButton("Evet") { _, _ ->
+                viewModel.locationProvider.openLocationSettings()
+                if (viewModel.locationProvider.isLocationEnabled()) viewModel.checkAndFetchWeather()
+            }
+            .setNegativeButton("Hayır") { _, _ ->
+                lifecycleScope.launch {
+                    val location = viewModel.locationProvider.getLastKnownLocation()
+                    if (location != null) {
+                        val lat = location.latitude
+                        val lon = location.longitude
+                        viewModel.fetchCurrentWeather(lat, lon, viewModel.apiKey)
+                        viewModel.fetchForecast(lat, lon, viewModel.apiKey)
+                    } else {
+                        showCustomToast("Son bilinen konum alınamadı.Null konum bilgisi döndü.")
+                        resetUI()
+                    }
+                }
+            }
+            .setCancelable(false)
+            .show()
+    }
+
 
     private fun setupTabObservers() {
         lifecycleScope.launch {
@@ -128,49 +181,21 @@ class MainActivity : AppCompatActivity() {
         binding.weatherCardsRecyclerView.adapter = weatherCardAdapter
     }
 
-    private fun setupObservers() {
-        setupTabObservers() // Sekme durumunu gözlemle
 
-        viewModel.forecastData.observe(this) { forecastData ->
-            Timber.d("ForecastData observed: %s", forecastData)
-            if (forecastData != null) {
-                binding.location.text = "${forecastData.city.name}, ${forecastData.city.country}"
-            } else {
-                binding.location.text = ""
-            }
-        }
-
-        viewModel.currentWeather.observe(this) { currentWeather ->
-            Timber.d("CurrentWeather observed: %s", currentWeather)
-            if (currentWeather != null) {
-                updateWeatherUI(currentWeather)
-            } else {
-                resetWeatherUI()
-            }
-        }
-
-        viewModel.weatherCards.observe(this) { cards ->
-            Timber.d("WeatherCards observed: %s", cards)
-            if (cards != null && cards.isNotEmpty()) {
-                weatherCardAdapter.updateCards(cards)
-                binding.weatherCardsRecyclerView.visibility = View.VISIBLE
-                binding.weatherCardsRecyclerView.scrollToPosition(0)
-                updateIconDescriptions(viewModel.getUsedIconDescriptions())
-                if (!weatherCardAdapter.hasSelectedCard()) {
-                    viewModel.currentWeather.value?.let { updateWeatherUI(it) }
+    private fun requestLocationPermission() {
+        val requestPermission =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+                if (isGranted) {
+                    viewModel.checkAndFetchWeather()
+                } else {
+                    showCustomToast(getString(R.string.location_permission_denied))
+                    resetUI()
+                    viewModel.locationProvider.openLocationPermissions()
                 }
-            } else {
-                binding.weatherCardsRecyclerView.visibility = View.GONE
-                updateIconDescriptions(emptyList())
             }
-        }
-
-        viewModel.error.observe(this) { errorMessage ->
-            if (errorMessage != null) {
-                showCustomToast(errorMessage)
-            }
-        }
+        requestPermission.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
     }
+
 
     private fun updateIconDescriptions(icons: List<IconDescription>) {
         binding.iconDescriptionContainer.removeAllViews()
@@ -253,45 +278,6 @@ class MainActivity : AppCompatActivity() {
         binding.weatherCardsRecyclerView.visibility = View.GONE
     }
 
-    private fun checkLocationAndFetchWeather() {
-        if (viewModel.locationProvider.hasLocationPermission()) {
-            if (viewModel.locationProvider.isLocationEnabled()) {
-                Timber.d("Location enabled, fetching weather")
-                resetUI()
-                viewModel.checkAndFetchWeather()
-            } else {
-                Timber.d("Location disabled")
-                if (!isLocationPromptShown) {
-                    showCustomToast("Konum servisleri kapalı")
-                    showLocationPrompt()
-                } else {
-                    showCustomToast("Konum kapalı, varsayılan konum kullanılıyor")
-                    resetUI()
-                    viewModel.checkAndFetchWeather()
-                }
-            }
-        } else {
-            Timber.d("Requesting location permission")
-            requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
-        }
-    }
-
-    private fun showLocationPrompt() {
-        isLocationPromptShown = true
-        AlertDialog.Builder(this)
-            .setTitle("Konum Servisleri Kapalı")
-            .setMessage("Konum bilgisi açık değil. Konum ayarlarına gitmek ister misiniz?")
-            .setPositiveButton("Evet") { _, _ ->
-                viewModel.locationProvider.openLocationSettings()
-            }
-            .setNegativeButton("Hayır") { _, _ ->
-                showCustomToast("Varsayılan konum kullanılıyor")
-                resetUI()
-                viewModel.checkAndFetchWeather()
-            }
-            .setCancelable(false)
-            .show()
-    }
 
     private fun showCustomToast(message: String) {
         val toast = Toast.makeText(this, message, Toast.LENGTH_LONG)
@@ -301,17 +287,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Timber.d("onResume called")
-        checkLocationAndFetchWeather()
+        Timber.d("onResume called, isFirstResume: $isFirstResume")
+        if (!isFirstResume && wasInBackground) {
+            viewModel.checkAndFetchWeather() // İlk açılışta atlanması için, sadece arka plandan dönüşte çalış
+        }
+        isFirstResume = false
     }
 
-    private val locationStateReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            if (intent?.action == LocationManager.PROVIDERS_CHANGED_ACTION) {
-                Timber.d("locationStateReceiver:Location providers changed")
-                // Konum servisi durumu değişti, tekrar kontrol et
-                checkLocationAndFetchWeather()
-            }
-        }
+    override fun onPause() {
+        super.onPause()
+        wasInBackground = true
     }
+
 }
