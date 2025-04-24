@@ -106,7 +106,7 @@ WeatherApp'ı yerel ortamınızda çalıştırmak için aşağıdaki adımları 
    Bir Android cihaz veya emülatör bağlayın. Ardından Run butonuna tıklayarak uygulamayı çalıştırın.
 
 ### Not
-Konum servislerini kullanmak için cihazda konum izninin açık olduğundan emin olun. Uygulama, konum izni verilmediğinde son bilinen konumu kullanmaya çalışır.
+Konum servislerini kullanmak için cihazda konum izninin açık olduğundan emin olun. Uygulama, konum izni verilmediğinde varsayılan konumu kullanmaya çalışır.
 
 ## :book: Kullanım
 
