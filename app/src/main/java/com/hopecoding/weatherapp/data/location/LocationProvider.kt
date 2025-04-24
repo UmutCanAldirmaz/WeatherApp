@@ -7,15 +7,21 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.net.Uri
 import android.provider.Settings
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
+import com.google.android.gms.tasks.CancellationTokenSource
+import com.google.android.gms.tasks.Tasks
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.coroutines.resume
 
 @Singleton
 class LocationProvider @Inject constructor(
@@ -45,14 +51,38 @@ class LocationProvider @Inject constructor(
     suspend fun getCurrentLocation(): Location? {
         if (!hasLocationPermission() || !isLocationEnabled()) return null
 
-        return suspendCancellableCoroutine { continuation ->
-            fusedLocationClient.lastLocation
-                .addOnSuccessListener { location ->
-                    continuation.resume(location)
+        return withContext(Dispatchers.IO) {
+            try {
+                val cancellationTokenSource = CancellationTokenSource()
+                Tasks.await(
+                    fusedLocationClient.getCurrentLocation(
+                        Priority.PRIORITY_HIGH_ACCURACY,
+                        cancellationTokenSource.token
+                    )
+                )
+            } catch (e: Exception) {
+                null
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    suspend fun getLastKnownLocation(): Location? {
+        if (!hasLocationPermission()) return null
+
+        return withContext(Dispatchers.IO) {
+            try {
+                val location = fusedLocationClient.lastLocation.await()
+                location ?: Location("default").apply {
+                    latitude = 41.0082 // İstanbul Fatih
+                    longitude = 28.9784
                 }
-                .addOnFailureListener {
-                    continuation.resume(null)
+            } catch (e: Exception) {
+                Location("default").apply {
+                    latitude = 41.0082 // İstanbul Fatih
+                    longitude = 28.9784
                 }
+            }
         }
     }
 
@@ -62,7 +92,10 @@ class LocationProvider @Inject constructor(
         context.startActivity(intent)
     }
 
-    fun getDefaultLocation(): Pair<Double, Double> {
-        return Pair(40.95890000, 29.17866000) // Istanbul Maltepe
+    fun openLocationPermissions() {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        intent.data = Uri.fromParts("package", context.packageName, null)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        context.startActivity(intent)
     }
 }
