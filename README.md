@@ -59,6 +59,7 @@ You can watch the screen recordings below to better understand how WeatherApp wo
 | **Coroutines**              | 1.7.3    | For asynchronous operations.                  |
 | **LiveData & ViewModel**    | 2.8.7    | For state management and UI updates.          |
 | **Material Design**         | 1.11.0   | For modern UI components.                     |
+| **MVVM Architecture**       | -        | For better data management and UI separation. |
 
 ### Dependencies
 
