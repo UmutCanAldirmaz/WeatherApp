@@ -19,7 +19,11 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
 
 | Ana Ekran | Saatlik Tahminler | 5 Günlük Tahmin |
 |-----------|-------------------|-----------------|
-| ![Ana Ekran](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_1.png?raw=true) | ![Saatlik Tahminler](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_2.png?raw=true) | ![5 Günlük Tahmin](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_3.png?raw=true) |
+| ![Ana Ekran](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_locationPermission.png?raw=true) 
+
+| ![Saatlik Tahminler](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_2.png?raw=true) 
+
+| ![5 Günlük Tahmin](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_3.png?raw=true) |
 
 ### Ekran Kaydı
 
