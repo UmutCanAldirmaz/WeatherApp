@@ -23,7 +23,7 @@
 
     <string name="icon_description">Hava durumu ikonu</string>
 
-    <string name="location_permission_denied">Konum izni verilmedi, varsayılan konum kullanılıyor</string>
+    <string name="location_permission_denied">Konum izni verilmedi,Uygulamaya izin veriniz.</string>
     
     <!-- Messages -->
     <string name="location_permission_rationale">Location permission is needed for weather data</string>
