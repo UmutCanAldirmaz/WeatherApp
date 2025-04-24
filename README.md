@@ -25,7 +25,7 @@ Below, you can find screenshots of WeatherApp's interface and screen recordings 
     <th>Location Permission</th>
     <th>Location Settings</th>
     <th>Next 5 Days</th>
-    <th>Tab Selection</th>
+    <th>Card Selection</th>
     <th>Tab Selection</th>
   </tr>
   <tr>
