@@ -24,6 +24,8 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
     <th>Konum Ayarları</th>
     <th>Sonraki 5 Gün</th>
     <th>Sekme Seçimi</th>
+    <th>Sekme Seçimi</th>
+    
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/338f520c-5ede-4442-a4a5-0541e45a3cc8" alt="Varsayılan Konum" width="150"/></td>
@@ -31,6 +33,8 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
     <td><img src="https://github.com/user-attachments/assets/0b1a7709-3ba7-4d4e-bda2-4b5bd69a4143" alt="Konum Ayarları" width="150"/></td>
     <td><img src="https://github.com/user-attachments/assets/226b6636-dc8b-494c-9980-5b9712021277" alt="Sonraki 5 Gün" width="150"/></td>
     <td><img src="https://github.com/user-attachments/assets/b35a2c36-c3c2-4738-ba68-5082268d1df3" alt="Sekme Seçimi" width="150"/></td>
+    <td><img src="https://github.com/user-attachments/assets/31c2ba53-70a3-4350-bc25-15398d1a69d2" alt="Sekme Seçimi" width="150"/></td>
+  
   </tr>
 </table>
 
