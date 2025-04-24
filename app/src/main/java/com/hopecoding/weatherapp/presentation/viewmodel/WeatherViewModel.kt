@@ -46,6 +46,9 @@ class WeatherViewModel @Inject constructor(
     private val _selectedTab = MutableStateFlow(0)
     val selectedTab: StateFlow<Int> = _selectedTab.asStateFlow()
 
+    private val _showLocationPrompt = MutableLiveData<Boolean>()
+    val showLocationPrompt: LiveData<Boolean> get() = _showLocationPrompt
+
     private val iconDescriptions = listOf(
         IconDescription("01d", "Açık Hava (Gündüz)"),
         IconDescription("01n", "Açık Hava (Gece)"),
@@ -78,35 +81,35 @@ class WeatherViewModel @Inject constructor(
         _currentWeather.value = null
         _weatherCards.value = null
         _error.value = null
+
     }
 
     fun checkAndFetchWeather() {
         viewModelScope.launch {
-            try {
-                resetData() // Eski verileri temizle
-                val (lat, lon) = if (locationProvider.hasLocationPermission() && locationProvider.isLocationEnabled()) {
-                    val location = locationProvider.getCurrentLocation()
-                    if (location != null) {
-                        Pair(location.latitude, location.longitude)
-                    } else {
-                        locationProvider.getDefaultLocation()
-                    }
+            resetData() // Eski verileri temizle
+            if (locationProvider.hasLocationPermission() && locationProvider.isLocationEnabled()) {
+                Timber.d("checkAndFetchWeather: Location permission granted and location enabled")
+                val location = locationProvider.getCurrentLocation()
+                val lat = location?.latitude
+                val lon = location?.longitude
+                if (lat != null && lon != null) {
+                    fetchCurrentWeather(lat, lon, apiKey)
+                    fetchForecast(lat, lon, apiKey)
+                    _showLocationPrompt.value = false
                 } else {
-                    locationProvider.getDefaultLocation()
+                    _error.value = "Mevcut konum alınamadı.Konum Bilgisi Null Gelmektedir."
                 }
-
-                val forecastJob = launch { fetchForecast(lat, lon, apiKey) }
-                val currentWeatherJob = launch { fetchCurrentWeather(lat, lon, apiKey) }
-                forecastJob.join()
-                currentWeatherJob.join()
-
-            } catch (e: Exception) {
-                _error.value = "Konum bilgisi alınamadı: ${e.message ?: "Bilinmeyen hata"}"
+            } else {
+                _showLocationPrompt.value = true
             }
         }
     }
 
-    private fun fetchForecast(lat: Double, lon: Double, apiKey: String) {
+
+
+
+
+    fun fetchForecast(lat: Double?, lon: Double?, apiKey: String) {
         viewModelScope.launch {
             try {
                 val response = repository.getForecastData(lat, lon, apiKey)
@@ -120,7 +123,7 @@ class WeatherViewModel @Inject constructor(
         }
     }
 
-    private fun fetchCurrentWeather(lat: Double, lon: Double, apiKey: String) {
+    fun fetchCurrentWeather(lat: Double?, lon: Double?, apiKey: String) {
         viewModelScope.launch {
             try {
                 val response = repository.getCurrentWeather(lat, lon, apiKey)
