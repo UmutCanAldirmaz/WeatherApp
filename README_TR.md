@@ -121,13 +121,6 @@ Uygulama açıldığında, konum izni isteyecektir. İzin verildikten sonra:
 3. **Hava Durumu Kartları**:
    Yatay kaydırılabilir kartlar ile saatlik tahminleri görebilirsiniz.
 
-### Örnek Kullanım
-
-- Uygulamayı açtığınızda, konum izni verin.
-- Ana ekranda mevcut konumunuzun, örneğin Bender Ereğli, TR, hava durumu bilgilerini göreceksiniz.
-- Bugün sekmesinde saatlik tahminleri inceleyin:
-  - Saat 12:00 - 14°C, Kapalı Bulutlu
-  - Saat 15:00 - 13°C, Kapalı Bulutlu
 
 ## :handshake: Katkıda Bulunma
 
