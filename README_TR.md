@@ -23,7 +23,7 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
     <th>Konum İzni</th>
     <th>Konum Ayarları</th>
     <th>Sonraki 5 Gün</th>
-    <th>Sekme Seçimi</th>
+    <th>Card Seçimi</th>
     <th>Sekme Seçimi</th>
     
   </tr>
