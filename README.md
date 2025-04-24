@@ -120,4 +120,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For questions or suggestions, feel free to reach out:  
 :email: [ucan.aldirmaz@gmail.com](mailto:ucan.aldirmaz@gmail.com)  
-:globe_with_meridians: [![LinkedIn](https://linkedin.com/in/umutcanaldirmaz)]
+:globe_with_meridians: [![LinkedIn](https://linkedin.com/in/umutcanaldirmaz)
