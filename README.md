@@ -111,15 +111,6 @@ When the app is launched, it will request location permission. Once granted:
 3. **Weather Cards**:
    View hourly forecasts through horizontally scrollable cards.
 
-## :handshake: Contributing
-
-If you'd like to contribute:
-
-1. Fork this repository.
-2. Create a new feature branch, for example, a branch named feature/feature-name.
-3. Make your changes and commit them, for example, with the message "Added new feature."
-4. Push your branch, for example, push the feature/feature-name branch to origin.
-5. Open a Pull Request.
 
 ## :memo: License
 
