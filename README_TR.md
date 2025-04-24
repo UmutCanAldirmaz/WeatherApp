@@ -125,7 +125,7 @@ Uygulama açıldığında, konum izni isteyecektir. İzin verildikten sonra:
 
 ## :memo: Lisans
 
-Bu proje MIT Lisansı altında lisanslanmıştır. Lisans detayları için LICENSE dosyasına bakabilirsiniz.
+Bu proje MIT Lisansı altında lisanslanmıştır. Lisans detayları için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
 
 ## :email: İletişim
 
