@@ -19,13 +19,13 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
 
 | Varsayılan Konum | Konum İzni | Sonraki 5 Gün (1) | Sonraki 5 Gün (2) | Sekme Seçimi | Hava Durumu Diyalogu |
 |------------------|------------|-------------------|-------------------|--------------|----------------------|
-| ![Varsayılan Konum](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_defaultLocation.png?raw=true) | ![Konum İzni](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_locationPermission.png?raw=true) | ![Sonraki 5 Gün (1)](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_next5Days.png?raw=true) | ![Sonraki 5 Gün (2)](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_next5Days2.png?raw=true) | ![Sekme Seçimi](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_selectedTab.png?raw=true) | ![Hava Durumu Diyalogu](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_weatherDialog.png?raw=true) |
+| ![Varsayılan Konum](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_defaultLocation.png) | ![Konum İzni](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_locationPermission.png) | ![Sonraki 5 Gün (1)](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_next5Days.png) | ![Sonraki 5 Gün (2)](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_next5Days2.png) | ![Sekme Seçimi](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_selectedTab.png) | ![Hava Durumu Diyalogu](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/Screenshot_weatherDialog.png) |
 
 ### Ekran Kaydı
 
 WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydını izleyebilirsiniz:
 
-
+![WeatherApp Ekran Kaydı](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/weather_app_demo.gif)
 
 ## :wrench: Kullanılan Teknolojiler ve Kütüphaneler
 
