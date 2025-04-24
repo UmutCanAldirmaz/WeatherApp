@@ -17,19 +17,15 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
 
 ### Ekran Görüntüleri
 
-| Ana Ekran | Saatlik Tahminler | 5 Günlük Tahmin |
-|-----------|-------------------|-----------------|
-| ![Ana Ekran](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_locationPermission.png?raw=true) 
-
-| ![Saatlik Tahminler](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_2.png?raw=true) 
-
-| ![5 Günlük Tahmin](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_3.png?raw=true) |
+| Varsayılan Konum | Konum İzni | Sonraki 5 Gün (1) | Sonraki 5 Gün (2) | Sekme Seçimi | Hava Durumu Diyalogu |
+|------------------|------------|-------------------|-------------------|--------------|----------------------|
+| ![Varsayılan Konum](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_defaultLocation.png?raw=true) | ![Konum İzni](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_locationPermission.png?raw=true) | ![Sonraki 5 Gün (1)](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_next5Days.png?raw=true) | ![Sonraki 5 Gün (2)](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_next5Days2.png?raw=true) | ![Sekme Seçimi](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_selectedTab.png?raw=true) | ![Hava Durumu Diyalogu](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/Screenshot_weatherDialog.png?raw=true) |
 
 ### Ekran Kaydı
 
 WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydını izleyebilirsiniz:
 
-![WeatherApp Ekran Kaydı](https://github.com/UmutCanAldirmaz/WeatherApp/blob/main/Screenshots/weather_app_demo.gif?raw=true)
+
 
 ## :wrench: Kullanılan Teknolojiler ve Kütüphaneler
 
