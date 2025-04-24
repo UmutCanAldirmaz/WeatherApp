@@ -129,7 +129,6 @@ Bu proje MIT Lisansı altında lisanslanmıştır. Lisans detayları için LICEN
 ## :email: İletişim
 
 Sorularınız veya önerileriniz için bana ulaşabilirsiniz:  
-:email: [umutcan.aldirmaz@example.com](mailto:ucan.aldirmaz@gmail.com)  
+:email: [ucan.aldirmaz@gmail.com](mailto:ucan.aldirmaz@gmail.com)  
 :globe_with_meridians: [GitHub Profilim](https://github.com/UmutCanAldirmaz)
-<br>
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/umutcanaldirmaz)
+
