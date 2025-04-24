@@ -17,20 +17,28 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
 
 ### Ekran Görüntüleri
 
-| Varsayılan Konum | Konum İzni | Konum Ayarları  | Sonraki 5 Gün  | Sekme Seçimi | 
-|------------------|------------|-------------------|-------------------|---------|
-|![Screenshot_defaultLocation](https://github.com/user-attachments/assets/338f520c-5ede-4442-a4a5-0541e45a3cc8)
-|![Screenshot_locationPermission](https://github.com/user-attachments/assets/4142c49b-cc5c-4a99-b69f-1e8790e7d5c8)
-|![Screenshot_weatherDialog](https://github.com/user-attachments/assets/0b1a7709-3ba7-4d4e-bda2-4b5bd69a4143)
-|![Screenshot_next5Days](https://github.com/user-attachments/assets/226b6636-dc8b-494c-9980-5b9712021277)
-|![Screenshot_selectedTab](https://github.com/user-attachments/assets/b35a2c36-c3c2-4738-ba68-5082268d1df3)
+<table>
+  <tr>
+    <th>Varsayılan Konum</th>
+    <th>Konum İzni</th>
+    <th>Konum Ayarları</th>
+    <th>Sonraki 5 Gün</th>
+    <th>Sekme Seçimi</th>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/338f520c-5ede-4442-a4a5-0541e45a3cc8" alt="Varsayılan Konum" width="150"/></td>
+    <td><img src="https://github.com/user-attachments/assets/4142c49b-cc5c-4a99-b69f-1e8790e7d5c8" alt="Konum İzni" width="150"/></td>
+    <td><img src="https://github.com/user-attachments/assets/0b1a7709-3ba7-4d4e-bda2-4b5bd69a4143" alt="Konum Ayarları" width="150"/></td>
+    <td><img src="https://github.com/user-attachments/assets/226b6636-dc8b-494c-9980-5b9712021277" alt="Sonraki 5 Gün" width="150"/></td>
+    <td><img src="https://github.com/user-attachments/assets/b35a2c36-c3c2-4738-ba68-5082268d1df3" alt="Sekme Seçimi" width="150"/></td>
+  </tr>
+</table>
 
 ### Ekran Kaydı
 
 WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydını izleyebilirsiniz:
 
 ![WeatherApp Ekran Kaydı](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/weather_app_demo.gif)
-
 ## :wrench: Kullanılan Teknolojiler ve Kütüphaneler
 
 | Kütüphane/Kategori          | Versiyon  | Açıklama                                      |
