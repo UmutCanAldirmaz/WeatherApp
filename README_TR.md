@@ -43,13 +43,13 @@ WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydın�
 
 ### Bağımlılıklar
 
-Projenin bağımlılıkları `libs.versions.toml` dosyasında tanımlanmıştır. Başlıca bağımlılıklar:
+Projenin bağımlılıkları libs.versions.toml dosyasında tanımlanmıştır. Başlıca bağımlılıklar şunlardır:
 
-- `androidx.appcompat:appcompat:1.6.1`
-- `androidx.constraintlayout:constraintlayout:2.1.4`
-- `com.squareup.retrofit2:retrofit:2.11.0`
-- `com.google.dagger:hilt-android:2.51.1`
-- `io.coil-kt:coil:2.5.0`
+- androidx.appcompat:appcompat:1.6.1
+- androidx.constraintlayout:constraintlayout:2.1.4
+- com.squareup.retrofit2:retrofit:2.11.0
+- com.google.dagger:hilt-android:2.51.1
+- io.coil-kt:coil:2.5.0
 
 ## :package: Kurulum
 
@@ -64,6 +64,57 @@ WeatherApp'ı yerel ortamınızda çalıştırmak için aşağıdaki adımları 
 ### Adımlar
 
 1. **Projeyi Klonlayın**:
-   ```bash
-   git clone https://github.com/UmutCanAldirmaz/WeatherApp.git
-   cd WeatherApp
+   Öncelikle projeyi GitHub üzerinden klonlayın ve proje dizinine geçin.
+
+2. **API Anahtarını Ekleyin**:
+   OpenWeatherMap'ten aldığınız API anahtarını local.properties dosyasına ekleyin. Bunun için dosyaya WEATHER_API_KEY=your_api_key_here satırını ekleyin.
+
+3. **Bağımlılıkları Yükleyin**:
+   Android Studio'da projeyi açın ve bağımlılıkların yüklenmesi için Sync Project with Gradle Files seçeneğini çalıştırın.
+
+4. **Uygulamayı Çalıştırın**:
+   Bir Android cihaz veya emülatör bağlayın. Ardından Run butonuna tıklayarak uygulamayı çalıştırın.
+
+### Not
+Konum servislerini kullanmak için cihazda konum izninin açık olduğundan emin olun. Uygulama, konum izni verilmediğinde son bilinen konumu kullanmaya çalışır.
+
+## :book: Kullanım
+
+Uygulama açıldığında, konum izni isteyecektir. İzin verildikten sonra:
+
+1. **Güncel Hava Durumu**:
+   Ana ekranda anlık sıcaklık, hissedilen sıcaklık ve nem bilgisi görüntülenir.
+
+2. **Sekmeler**:
+   Bugün, Yarın ve Sonraki 5 Gün sekmeleri ile hava durumu tahminlerine erişebilirsiniz.
+
+3. **Hava Durumu Kartları**:
+   Yatay kaydırılabilir kartlar ile saatlik tahminleri görebilirsiniz.
+
+### Örnek Kullanım
+
+- Uygulamayı açtığınızda, konum izni verin.
+- Ana ekranda mevcut konumunuzun, örneğin Bender Ereğli, TR, hava durumu bilgilerini göreceksiniz.
+- Bugün sekmesinde saatlik tahminleri inceleyin:
+  - Saat 12:00 - 14°C, Kapalı Bulutlu
+  - Saat 15:00 - 13°C, Kapalı Bulutlu
+
+## :handshake: Katkıda Bulunma
+
+Katkıda bulunmak isterseniz:
+
+1. Bu depoyu fork edin.
+2. Yeni bir özellik branch'i oluşturun, örneğin feature/ozellik-adi adında bir branch.
+3. Değişikliklerinizi yapın ve commit edin, örneğin Yeni özellik eklendi mesajıyla commit yapabilirsiniz.
+4. Branch'inizi push edin, örneğin feature/ozellik-adi branch'ini origin'e push edin.
+5. Bir Pull Request açın.
+
+## :memo: Lisans
+
+Bu proje MIT Lisansı altında lisanslanmıştır. Lisans detayları için LICENSE dosyasına bakabilirsiniz.
+
+## :email: İletişim
+
+Sorularınız veya önerileriniz için bana ulaşabilirsiniz:  
+:email: [umutcan.aldirmaz@example.com](mailto:umutcan.aldirmaz@example.com)  
+:globe_with_meridians: [GitHub Profilim](https://github.com/UmutCanAldirmaz)
