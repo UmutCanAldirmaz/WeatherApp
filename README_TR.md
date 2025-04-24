@@ -42,14 +42,9 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
 
 WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydını izleyebilirsiniz
 
-<video width="300" height="240" controls>
-  <source src="https://github.com/user-attachments/assets/d88de3b1-8296-4b66-8c62-ed132536d547" type="video/mp4">
-</video>
+[Screen_recording_weatherApp.webm](https://github.com/user-attachments/assets/e991cd95-bfa4-4aae-98e0-992899847348)
 
-<video width="300" height="240" controls>
-  <source src="https://github.com/user-attachments/assets/6bbdb232-5f90-4de8-8afb-2b326f085d7a" type="video/webm">
-  </video>
-
+[Screen_recording_weatherApp2.webm](https://github.com/user-attachments/assets/6bbdb232-5f90-4de8-8afb-2b326f085d7a)
 
 
 
