@@ -122,16 +122,6 @@ Uygulama açıldığında, konum izni isteyecektir. İzin verildikten sonra:
    Yatay kaydırılabilir kartlar ile saatlik tahminleri görebilirsiniz.
 
 
-## :handshake: Katkıda Bulunma
-
-Katkıda bulunmak isterseniz:
-
-1. Bu depoyu fork edin.
-2. Yeni bir özellik branch'i oluşturun, örneğin feature/ozellik-adi adında bir branch.
-3. Değişikliklerinizi yapın ve commit edin, örneğin Yeni özellik eklendi mesajıyla commit yapabilirsiniz.
-4. Branch'inizi push edin, örneğin feature/ozellik-adi branch'ini origin'e push edin.
-5. Bir Pull Request açın.
-
 ## :memo: Lisans
 
 Bu proje MIT Lisansı altında lisanslanmıştır. Lisans detayları için LICENSE dosyasına bakabilirsiniz.
@@ -141,3 +131,4 @@ Bu proje MIT Lisansı altında lisanslanmıştır. Lisans detayları için LICEN
 Sorularınız veya önerileriniz için bana ulaşabilirsiniz:  
 :email: [umutcan.aldirmaz@example.com](mailto:umutcan.aldirmaz@example.com)  
 :globe_with_meridians: [GitHub Profilim](https://github.com/UmutCanAldirmaz)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/umutcanaldirmaz)
