@@ -53,6 +53,7 @@ WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydın�
 
 
 
+[Screen_recording_weatherApp2.webm](https://github.com/user-attachments/assets/6bbdb232-5f90-4de8-8afb-2b326f085d7a)
 
 
 
