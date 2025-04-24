@@ -47,7 +47,7 @@ WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydın�
 </video>
 
 <video width="300" height="240" controls>
-  <source src="https://github.com/user-attachments/assets/ce72f79a-6def-474a-8243-f77cdc785411" type="video/mp4">
+  <source src="https://github.com/user-attachments/assets/6bbdb232-5f90-4de8-8afb-2b326f085d7a" type="video/webm">
   
 </video>
 
