@@ -70,6 +70,7 @@ WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydın�
 | **Coroutines**              | 1.7.3     | Asenkron işlemler için.                      |
 | **LiveData & ViewModel**    | 2.8.7     | Durum yönetimi ve UI güncellemeleri için.    |
 | **Material Design**         | 1.11.0    | Modern UI bileşenleri için.                  |
+| **MVVM Mimarisi**           | -         | Daha iyi veri yönetimi ve UI ayrımı için...  |
 
 ### Bağımlılıklar
 
