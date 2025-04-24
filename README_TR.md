@@ -40,9 +40,10 @@ Aşağıda WeatherApp'ın arayüzüne dair ekran görüntülerini ve uygulamanı
 
 ### Ekran Kaydı
 
-WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydını izleyebilirsiniz:
+WeatherApp'ın kullanımını daha iyi anlamak için aşağıdaki ekran kaydını izleyebilirsini
 
-![WeatherApp Ekran Kaydı](https://raw.githubusercontent.com/UmutCanAldirmaz/WeatherApp/main/Screenshots/weather_app_demo.gif)
+![WeatherApp Ekran Kaydı](https://github.com/user-attachments/assets/7f8579d1-a99c-4289-8938-5a35a263800e)
+
 ## :wrench: Kullanılan Teknolojiler ve Kütüphaneler
 
 | Kütüphane/Kategori          | Versiyon  | Açıklama                                      |
